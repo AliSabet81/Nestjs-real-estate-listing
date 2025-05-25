@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+
 import { CreateListingDto } from './dto/create-listing.dto';
 import { DatabaseService } from '../../database/database.service';
 
@@ -6,11 +7,13 @@ import { DatabaseService } from '../../database/database.service';
 export class ListingService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  create(createListingDto: CreateListingDto) {
-    return 'creating';
+  async create(createListingDto: CreateListingDto) {
+    return await this.databaseService.listing.create({
+      data: createListingDto,
+    });
   }
 
-  findAll() {
-    return 'find all';
+  async findAll() {
+    return await this.databaseService.listing.findMany();
   }
 }
