@@ -9,6 +9,7 @@ import { ListingProducer } from './queue/listing.producer';
 import { ListingConsumer } from './queue/listing.consumer';
 import { LISTING_QUEUE } from '../../core/queue/queue.constants';
 import { UtilitiesModule } from '../../utilities/utilities.module';
+import { GoogleCloudModule } from '../../services/google-cloud/google-cloud.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UtilitiesModule } from '../../utilities/utilities.module';
       adapter: BullAdapter,
     }),
     UtilitiesModule,
+    GoogleCloudModule,
   ],
   controllers: [ListingController],
   providers: [ListingService, ListingProducer, ListingConsumer],
