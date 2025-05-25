@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Global, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 import config from '../config';
+import { QueueModule } from './queue/queue.module';
 import { CacheService } from './cache/cache.service';
 import { LoggerService } from './logger/logger.service';
 import { DatabaseService } from '../database/database.service';
@@ -32,6 +33,7 @@ import { TransformResponseInterceptor } from './interceptors/transform-response/
       },
       inject: [ConfigService],
     }),
+    QueueModule,
   ],
   providers: [
     {

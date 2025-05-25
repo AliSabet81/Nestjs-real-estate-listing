@@ -1,0 +1,14 @@
+import { Queue } from 'bull';
+import { InjectQueue } from '@nestjs/bull';
+import { Injectable } from '@nestjs/common';
+
+import { LISTING_QUEUE } from '../../../core/queue/queue.constants';
+
+@Injectable()
+export class ListingProducer {
+  constructor(@InjectQueue(LISTING_QUEUE) private listingQueue: Queue) {}
+
+  async createListingImage(image: Express.Multer.File) {
+    return await this.listingQueue.add(`createListingImage`, image);
+  }
+}
