@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  real_estate_listings_postgres: # Needs updating
+    image: postgres:alpine
+    container_name: real_estate_listings_postgres # Needs updating
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - real_estate_listings_postgres_data:/var/lib/postgresql/data # Needs updating
+
+  real_estate_listings_redis: # Needs updating
+    image: redis:alpine
+    container_name: real_estate_listings_redis # Needs updating
+    ports:
+      - '6379:6379'
+    volumes:
+      - real_estate_listings_redis_data:/data # Needs updating
+
+networks:
+  default:
+    name: real_estate_listings # Needs updating
+
+volumes:
+  real_estate_listings_postgres_data: # Needs updating
+  real_estate_listings_redis_data: # Needs updating
