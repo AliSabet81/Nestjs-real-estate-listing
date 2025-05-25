@@ -1,5 +1,6 @@
-import { OnQueueFailed } from '@nestjs/bull';
 import { Job } from 'bull';
+import { OnQueueFailed } from '@nestjs/bull';
+
 import { LoggerService } from '../logger/logger.service';
 
 export abstract class BaseConsumer {

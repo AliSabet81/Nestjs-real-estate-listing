@@ -8,6 +8,7 @@ import { ListingController } from './listing.controller';
 import { ListingProducer } from './queue/listing.producer';
 import { ListingConsumer } from './queue/listing.consumer';
 import { LISTING_QUEUE } from '../../core/queue/queue.constants';
+import { UtilitiesModule } from '../../utilities/utilities.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { LISTING_QUEUE } from '../../core/queue/queue.constants';
       name: LISTING_QUEUE,
       adapter: BullAdapter,
     }),
+    UtilitiesModule,
   ],
   controllers: [ListingController],
   providers: [ListingService, ListingProducer, ListingConsumer],
