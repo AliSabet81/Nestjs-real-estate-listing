@@ -21,7 +21,7 @@ export class DatabaseService extends PrismaClient {
     try {
       await this.$executeRawUnsafe(`TRUNCATE TABLE ${tables} CASCADE;`);
     } catch (error) {
-      console.log({ error });
+      console.error({ error });
     }
   }
 }

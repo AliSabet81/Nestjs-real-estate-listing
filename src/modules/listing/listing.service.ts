@@ -57,7 +57,6 @@ export class ListingService {
         url: publicUrl,
       },
     });
-    console.log(listingImage);
     return listingImage;
   }
 
