@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bull';
+import { BullBoardModule } from '@bull-board/nestjs';
+import { ExpressAdapter } from '@bull-board/express';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
@@ -19,6 +21,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         };
       },
       inject: [ConfigService],
+    }),
+    BullBoardModule.forRoot({
+      route: `/queues`,
+      adapter: ExpressAdapter,
     }),
   ],
 })
